@@ -33,17 +33,20 @@
 
     Servo - Class for manipulating servo motors connected to Arduino pins.
 
-    attach(pin ) - Attaches a servo motor to an I/O pin.
-    attach(pin, min, max  ) - Attaches to a pin setting min and max values in
+    attach(pin) - Attaches a servo motor to an I/O pin.
+    attach(pin, min, max) - Attaches to a pin setting min and max values in
   microseconds default min is 544, max is 2400
 
     write()     - Sets the servo angle in degrees. (invalid angle that is valid
-  as pulse in microseconds is treated as microseconds) writeMicroseconds() -
-  Sets the servo pulse width in microseconds read()      - Gets the last written
-  servo pulse width as an angle between 0 and 180. readMicroseconds()   - Gets
-  the last written servo pulse width in microseconds. (was read_us() in first
-  release) attached()  - Returns true if there is a servo attached. detach() -
-  Stops an attached servos from pulsing its I/O pin.
+  as pulse in microseconds is treated as microseconds)
+    writeMicroseconds() - Sets the servo pulse width in microseconds
+    read()      - Gets the last written servo pulse width as an angle between 0
+  and 180.
+    readMicroseconds()   - Gets the last written servo pulse width in
+  microseconds. (was read_us() in first release)
+
+    attached()  - Returns true if there is a servo attached.
+    detach()    - Stops an attached servos from pulsing its I/O pin.
  */
 
 #ifndef Servo_h
