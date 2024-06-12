@@ -76,7 +76,7 @@ static inline void handle_interrupts(timer16_Sequence_t timer, volatile uint16_t
 
 #ifndef WIRING // Wiring pre-defines signal handlers so don't define any if compiling for the Wiring platform
 // Interrupt handlers for Arduino
-#if defined(_useTimer1) || !defined(RUST_TIMER1_COMPA)
+#if defined(_useTimer1) && !defined(RUST_TIMER1_COMPA)
 SIGNAL (TIMER1_COMPA_vect)
 {
   handle_interrupts(_timer1, &TCNT1, &OCR1A);
@@ -312,6 +312,26 @@ int Servo::readMicroseconds()
 bool Servo::attached()
 {
   return servos[this->servoIndex].Pin.isActive ;
+}
+
+servo_t *__get_servo(uint8_t index)
+{
+  return &servos[index];
+}
+
+volatile int8_t* __get_channel(timer16_Sequence_t timer)
+{
+  return &Channel[timer];
+}
+
+uint8_t __get_servoCount()
+{
+  return ServoCount;
+}
+
+uint8_t __inc_servoCount()
+{
+  return ServoCount++;
 }
 
 #endif // ARDUINO_ARCH_AVR
